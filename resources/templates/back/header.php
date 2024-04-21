@@ -1,13 +1,14 @@
-<?php include "../../resources/db.php";  
+<?php include "../../resources/db.php"; ?>
+
+<?php //include "../../resources/db.php";  
 include "top-nav.php"; ?>
- <?php
- if(!isset($_SESSION['role'])) {
-    if($_SESSION['role'] !== 'Admin') {
-        header("Location: ../index.php");
-    }
- }
- 
- ?>                          
+<?php
+if(!isset($_SESSION['role']) ) {
+    redirect("../index.php");
+}
+?>
+
+                         
 
 <!DOCTYPE html>
 <html lang="en">

@@ -71,7 +71,6 @@ function fetch_array($result) {
             if(mysqli_num_rows($query) == 0) {
                 set_message("Your password or username is wrong");
                 redirect("login.php");
-
             } else {
                 redirect("admin");
             }

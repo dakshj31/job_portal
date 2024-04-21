@@ -1,6 +1,6 @@
 <?php include "../resources/db.php";
 include "../resources/templates/front/header.php";
-include "../resources/functions.php";?>
+// include "../resources/functions.php";?>
         <!-- Header End -->
         <div class="container-xxxl py-5 bg-dark page-header mb-5">
             <div class="container my-5 pt-5 pb-4">

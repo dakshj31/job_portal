@@ -1,7 +1,7 @@
 
 <?php include "../resources/db.php"; 
 include "../resources/templates/front/header.php"; 
-include "../resources/functions.php"; ?>
+// include "../resources/functions.php"; ?>
 
 <body>
     <div class="container-xxl bg-white p-0">
