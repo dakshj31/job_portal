@@ -72,11 +72,14 @@ function fetch_array($result) {
                 set_message("Your password or username is wrong");
                 redirect("login.php");
             } else {
+                $_SESSION['username'] = $username;
                 redirect("admin");
             }
 
         }
-    } 
+
+    }
+    
 
     function send_message() {
 
@@ -102,4 +105,36 @@ function fetch_array($result) {
         }
     }
 
+    // ============================ BACKEND FUNCTIONS========================= //
+
+    function register_user(){
+
+        global $connection;
+
+        if (isset($_POST['register'])) {
+
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $role = $_POST['user_type'];
+
+            //move_uploaded_file($temp_image, "uploads/$image");
+
+
+            $sql = "INSERT INTO user (username, email, password, role) VALUES ('{$username}', '{$email}', '{$password}', '{$role}')"; 
+            $register_user_query = mysqli_query($connection, $sql);
+
+            if(!$register_user_query) {
+                        die("Query failed: " . mysqli_error($connection));
+                     } else {
+                         echo "Registration successful!";
+                     }
+
+                     redirect("login.php");
+                     set_message("Registration successful!");
+        }
+
+    }
+
+ 
 ?>

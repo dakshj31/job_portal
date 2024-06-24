@@ -3,7 +3,7 @@
 <?php //include "../../resources/db.php";  
 include "top-nav.php"; ?>
 <?php
-if(!isset($_SESSION['role']) ) {
+if(!isset($_SESSION['username']) ) {
     redirect("../index.php");
 }
 ?>
