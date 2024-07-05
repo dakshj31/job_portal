@@ -65,18 +65,54 @@ function fetch_array($result) {
             $username = escape_string($_POST['username']);
             $password = escape_string($_POST['password']);
 
-            $query = query("SELECT * FROM user WHERE username = '{$username}' AND password = '{$password}' ");
+            $loginquery = ("SELECT * FROM user WHERE username = '{$username}' AND password = '{$password}' ");
+            $query = query($loginquery);
             confirm($query);
 
+            while ($row = mysqli_fetch_array($query))  {
+
+                $db_userid = $row['user_id'];
+                $db_username = $row['username'];
+                $db_password = $row['password'];
+                $db_role = $row['role'];
+
+        if($db_role == 'Admin') {
             if(mysqli_num_rows($query) == 0) {
                 set_message("Your password or username is wrong");
                 redirect("login.php");
             } else {
-                $_SESSION['username'] = $username;
-                redirect("admin");
-            }
-
+                $_SESSION['username'] = $db_username;
+                $_SESSION['user_id'] = $db_userid;
+                $_SESSION['role'] = $db_role;
+                $_SESSION['password'] = $db_password;
+                  redirect("admin");
+            } 
+        } elseif ($db_role == 'Company') {
+            if(mysqli_num_rows($query) == 0) {
+                set_message("Your password or username is wrong");
+                redirect("login.php");
+            } else {
+                $_SESSION['username'] = $db_username;
+                $_SESSION['user_id'] = $db_userid;
+                $_SESSION['role'] = $db_role;
+                $_SESSION['password'] = $db_password;
+                  redirect("company-index.php");
+            } 
+        } elseif ($db_role == 'Candidate') {
+            if(mysqli_num_rows($query) == 0) {
+                set_message("Your password or username is wrong");
+                redirect("login.php");
+            } else {
+                $_SESSION['username'] = $db_username;
+                $_SESSION['user_id'] = $db_userid;
+                $_SESSION['role'] = $db_role;
+                $_SESSION['password'] = $db_password;
+                  redirect("candidate-index.php");
+            } 
         }
+
+        } 
+    }
 
     }
     
