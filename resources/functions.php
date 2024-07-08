@@ -85,7 +85,7 @@ function fetch_array($result) {
                 $_SESSION['user_id'] = $db_userid;
                 $_SESSION['role'] = $db_role;
                 $_SESSION['password'] = $db_password;
-                  redirect("admin");
+                  redirect("admin/admin_index.php");
             } 
         } elseif ($db_role == 'Company') {
             if(mysqli_num_rows($query) == 0) {
