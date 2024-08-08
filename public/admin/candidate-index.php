@@ -1,5 +1,6 @@
-<?php include "../resources/db.php"; 
-include "../resources/templates/front/header.php"; 
+<?php include "../../resources/db.php"; 
+include "includes/header.php";
+include "includes/top-nav.php";
 
 
 if(!isset($_SESSION['username']) ) {
@@ -48,7 +49,7 @@ if(!isset($_SESSION['username']) ) {
     <h1 class=" text-center"><i class="fa fa-fw fa-table"></i> 
          Your Applied Jobs...!!
     </h1>
-     <h4 class="text-center bg-info"><?php display_message(); ?></h4> 
+     <h4 class="text-center"><?php display_message(); ?></h4> 
 
     <table class="table" style="min-height: 400px;">
         <thead>
@@ -72,8 +73,8 @@ if(!isset($_SESSION['username']) ) {
 
 
                 <div class="text-center">
-<a href="candidate-profile.php" class="btn btn-primary">Update your profile</a>
+<a href="../candidate-profile.php" class="btn btn-primary">Update your profile</a>
 </div>
 
 
-<?php include "../resources/templates/front/footer.php";?>
+<?php include "includes/footer.php";?>

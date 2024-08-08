@@ -96,7 +96,7 @@ function fetch_array($result) {
                 $_SESSION['user_id'] = $db_userid;
                 $_SESSION['role'] = $db_role;
                 $_SESSION['password'] = $db_password;
-                  redirect("company-index.php");
+                  redirect("admin/company-index.php");
             } 
         } elseif ($db_role == 'Candidate') {
             if(mysqli_num_rows($query) == 0) {
@@ -107,7 +107,7 @@ function fetch_array($result) {
                 $_SESSION['user_id'] = $db_userid;
                 $_SESSION['role'] = $db_role;
                 $_SESSION['password'] = $db_password;
-                  redirect("candidate-index.php");
+                  redirect("admin/candidate-index.php");
             } 
         }
 
@@ -160,17 +160,60 @@ function fetch_array($result) {
             $sql = "INSERT INTO user (username, email, password, role) VALUES ('{$username}', '{$email}', '{$password}', '{$role}')"; 
             $register_user_query = mysqli_query($connection, $sql);
 
+            if($role == 'Candidate') {
+
+                $candidate_query = "INSERT INTO candidate (name) VALUES ('{$username}' )";
+                $query = query($candidate_query);
+                confirm($query);
+            }
+
             if(!$register_user_query) {
                         die("Query failed: " . mysqli_error($connection));
                      } else {
-                         echo "Registration successful!";
+                         redirect("login.php");
+                         set_message("Registration successful!");
                      }
-
-                     redirect("login.php");
-                     set_message("Registration successful!");
         }
 
     }
 
+    function candidate_profile_update() {
+
+        if (isset($_POST['update'])) {
+
+            $username = $_SESSION['username'];
+            $description = $_POST['candidate_description'];
+            $cv = $_FILES['file1']['name'];
+            $temp_cv = $_FILES['file1']['tmp_name'];
+            $knowledge = $_POST['candidate_knowledge'];
+            $skills = $_POST['candidate_skills'];
+            $education = $_POST['candidate_education'];
+            $experience = $_POST['candidate_experience'];
+            $image = $_FILES['file2']['name'];
+            $temp_image = $_FILES['file2']['tmp_name'];
+            
+            move_uploaded_file($temp_cv, "candidate_cv/$cv");
+            move_uploaded_file($temp_image, "images/$image");
+
+            if(empty($image)) {
+
+                $username = $_SESSION['username'];
+                $query = query("SELECT * FROM user WHERE username ='{$username}' ");
+
+                while ($row = fetch_array($query)) {
+                    $image = $row['image'];
+                }
+            }
+
+            $profile_query = "UPDATE candidate SET description = '{$description}', cv = '{$cv}', knowledge = '{$knowledge}', skills = '{$skills}', education = '{$education}', experience = '{$experience}', image = '{$image}' ";
+            $profile_query .= "WHERE name = '{$username}' ";
+            $query = query($profile_query);
+            confirm($query);
+
+            set_message("Your profile has been submitted");
+            redirect("candidate-index.php");
+        }
+
+    }
  
 ?>

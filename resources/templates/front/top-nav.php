@@ -29,6 +29,7 @@
                     <a href="login.php" class="nav-item nav-link ">Login</a>
                     <a href="registration.php" class="nav-item nav-link ">Register</a>
                     <a href="admin/admin_index.php" class="nav-item nav-link ">Admin</a>
+                    
                 </div>
                 <!-- <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block"><i class="fa fa-arrow-right ms-3"></i></a> -->
             </div>
