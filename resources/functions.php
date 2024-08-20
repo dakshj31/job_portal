@@ -215,5 +215,76 @@ function fetch_array($result) {
         }
 
     }
+
+    function add_jobs(){
+
+        if(isset($_POST['submit'])){
+            $company_id = $_SESSION['user_id'];
+            $company_name = $_SESSION['username'];
+            $title = $_POST['job_title'];
+            $description = $_POST['job_description'];
+            $vacancy = $_POST['job_vacancy'];
+            $nature = $_POST['job_nature'];
+            $knowledge = $_POST['job_knowledge'];
+            $skills = $_POST['job_skills'];
+            $education = $_POST['job_education'];
+            $experience = $_POST['job_experience'];
+            $salary = $_POST['job_salary'];
+            $location = $_POST['job_location'];
+
+           
+            $query = query("INSERT INTO jobs( title , company_id , company_name , description , vacancy , nature , knowledge , skills, education , experience , salary , location) VALUES( '{$title}' , '{$company_id}' , '{$company_name}' , '{$description}' , '{$vacancy}' , '{$nature}' , '{$knowledge}' , '{$skills}' , '{$education}' , '{$experience}' , '{$salary}' , '{$location}') ");
+            confirm($query);
+
+            set_message("New job created");
+            redirect("company-index.php");
+
+        }
+    }
  
+
+    function get_jobs_company_admin()
+    {
+
+        $username = $_SESSION['username'];
+
+        $query = query("SELECT * FROM jobs WHERE company_name = '{$username}' ");
+        confirm($query);
+
+        while ($row = fetch_array($query)) {
+
+            $user_admin_job = <<<DELIMETER
+
+<tr>
+<td>{$row['id']}</td>
+<td>{$row['title']}</td>
+<td>{$row['company_name']}</td>
+<td>{$row['description']}</td>
+<td>&#8377{$row['salary']}</td>
+<td>{$row['location']}</td>
+<td>
+<div class="header-btn d-none d-lg-block">
+<a href="job_details.php?id={$row['id']}" class="">View</a>
+</div>
+</td>
+<td>
+<div class="header-btn d-none d-lg-block">
+<a href="edit_jobs.php?id={$row['id']}" class="">Update</a>
+</div>
+</td>
+<td>
+<div class="header-btn d-none d-lg-block">
+<a href="delete_jobs.php?id={$row['id']}" class="">Delete</a>
+</div>
+</td>
+
+</tr>
+
+DELIMETER;
+
+echo $user_admin_job;
+
+        }
+
+    }
 ?>

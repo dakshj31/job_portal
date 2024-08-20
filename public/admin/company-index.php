@@ -38,21 +38,20 @@ if(!isset($_SESSION['username']) ) {
                 <th>Description</th>
                 <th>(&#8377;)Salary</th>
                 <th>Location</th>
-                <th>Posted At</th>
                 <th>View Job</th>
                 <th>Update</th>
                 <th>Delete</th>
             </tr>
         </thead>
         <tbody>
-            <?php //get_jobs_company_admin(); ?>
+            <?php get_jobs_company_admin(); ?>
         </tbody>
     </table>
 </div>
 
 <!-- Add Button -->
 <div class="text-center">
-<a href="" class="btn btn-primary">Add New Job</a>
+<a href="add_jobs.php" class="btn btn-primary">Add New Job</a>
 </div>
 <!-- Add Button Ends -->
 <br>
