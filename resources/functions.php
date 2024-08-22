@@ -260,7 +260,7 @@ function fetch_array($result) {
 <td>{$row['title']}</td>
 <td>{$row['company_name']}</td>
 <td>{$row['description']}</td>
-<td>&#8377{$row['salary']}</td>
+<td>&#8377;{$row['salary']}</td>
 <td>{$row['location']}</td>
 <td>
 <div class="header-btn d-none d-lg-block">
