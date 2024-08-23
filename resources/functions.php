@@ -286,5 +286,48 @@ echo $user_admin_job;
 
         }
 
+    } 
+
+    function get_posted_job() {
+
+        $query = query("SELECT * FROM jobs LIMIT 4");
+        confirm($query);
+
+        while ($row = fetch_array($query)) {
+
+            $company_id = $row['company_id'];
+            $job_company_name = $row['company_name'];
+            $job_id = $row['id'];
+            $job_title = $row['title'];
+            $job_location = $row['location'];
+            $job_salary = $row['salary'];
+            $job_nature = $row['nature'];
+            $job_created_at = $row['created at'];
+
+            $featured_jobs = <<<DELIMETER
+<div class="single-job-items mb-30">
+<div class="job-items">
+<div class="job-title">
+  <a href="../../job-detail.php?id={$job_id}">
+  <h4>{$job_title}</h4>
+  </a>
+  <ul>
+  <li>{$job_company_name}</li>
+   <li><i class="fas fa-map-marker-alt"></i>{$job_location}</li>
+   <li>&#*#&&; {$job_salary}</li>
+   </ul>
+   </div>
+   </div>
+<div class="items-link f-right">
+                        <a href="../../job-detail.php?id={$job_id}">{$job_nature}</a>
+                        <span>{$job_created_at}</span>
+                    </div>
+                </div>
+
+DELIMETER;
+echo $featured_jobs;
+
+        }
     }
-?>
+    
+    ?>

@@ -85,9 +85,9 @@ if (isset($_GET['id'])) {
                             <h4 class="mb-4"></h4>
                             <form>
                                 <div class="row g-3">
-                                    <div class="col-12">
-                                        <button class="btn btn-primary w-100" type="submit">Apply Now</button>
-                                    </div>
+                                <div class="text-center">
+<a href="#" class="btn btn-primary">Apply Now</a>
+</div>
                                 </div>
                             </form>
                         </div>

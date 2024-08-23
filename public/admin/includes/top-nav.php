@@ -27,6 +27,7 @@
                     </div>
                     <a href="../contact.php" class="nav-item nav-link">Contact</a>
                     <a href="logout.php" class="nav-item nav-link">Logout</a>
+                    <a href="logout.php" class="nav-item nav-link"></a>
                     
                     
                 </div>
