@@ -1,5 +1,6 @@
-<?php include "../resources/db.php";
-include "../resources/templates/front/header.php"; 
+<?php include "../../resources/db.php";
+include "includes/header.php";
+include "includes/top-nav.php";
 
 /***  job details query  ***/
 if (isset($_GET['id'])) {
@@ -81,24 +82,9 @@ if (isset($_GET['id'])) {
                         </div>
         
                         <div class="">
-                            <h4 class="mb-4">Apply For The Job</h4>
+                            <h4 class="mb-4"></h4>
                             <form>
                                 <div class="row g-3">
-                                    <div class="col-12 col-sm-6">
-                                        <input type="text" class="form-control" placeholder="Your Name">
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                        <input type="email" class="form-control" placeholder="Your Email">
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                        <input type="text" class="form-control" placeholder="Portfolio Website">
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                        <input type="file" class="form-control bg-white">
-                                    </div>
-                                    <div class="col-12">
-                                        <textarea class="form-control" rows="5" placeholder="Coverletter"></textarea>
-                                    </div>
                                     <div class="col-12">
                                         <button class="btn btn-primary w-100" type="submit">Apply Now</button>
                                     </div>
@@ -129,4 +115,4 @@ if (isset($_GET['id'])) {
         <!-- Job Detail End -->
 
 
-        <?php include "../resources/templates/front/footer.php"; ?>
+        <?php include "includes/footer.php";?>

@@ -264,7 +264,7 @@ function fetch_array($result) {
 <td>{$row['location']}</td>
 <td>
 <div class="header-btn d-none d-lg-block">
-<a href="../job-detail.php?id={$row['id']}" class="">View</a>
+<a href="job-detail.php?id={$row['id']}" class="">View</a>
 </div>
 </td>
 <td>
