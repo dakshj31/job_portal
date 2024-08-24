@@ -305,24 +305,26 @@ echo $user_admin_job;
             $job_created_at = $row['created at'];
 
             $featured_jobs = <<<DELIMETER
-<div class="single-job-items mb-30">
-<div class="job-items">
-<div class="job-title">
-  <a href="../../job-detail.php?id={$job_id}">
-  <h4>{$job_title}</h4>
-  </a>
-  <ul>
-  <li>{$job_company_name}</li>
-   <li><i class="fas fa-map-marker-alt"></i>{$job_location}</li>
-   <li>&#*#&&; {$job_salary}</li>
-   </ul>
-   </div>
-   </div>
-<div class="items-link f-right">
-                        <a href="../../job-detail.php?id={$job_id}">{$job_nature}</a>
-                        <span>{$job_created_at}</span>
-                    </div>
-                </div>
+ <div class="job-item p-4 mb-4">
+                                <div class="row g-4">
+                                    <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-1.jpg" alt="" style="width: 80px; height: 80px;">
+                                        <div class="text-start ps-4">
+                                            <h5 class="mb-3">{$job_title}</h5>
+                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{$job_location}</span>
+                                            <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{$job_nature}</span>
+                                            <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>{$job_salary}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                        <div class="d-flex mb-3">
+                                            <a class="btn btn-light btn-square me-3" href=""><i class="far fa-heart text-primary"></i></a>
+                                            <a class="btn btn-primary" href="">Apply Now</a>
+                                        </div>
+                                        <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>{$job_created_at}</small>
+                                    </div>
+                                </div>
+                            </div>
 
 DELIMETER;
 echo $featured_jobs;

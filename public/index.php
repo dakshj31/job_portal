@@ -199,10 +199,10 @@ include "../resources/templates/front/header.php"; ?>
                         <!-- </li>
                     </ul> -->
 
-                    <?php  ?>
+                    <?php get_posted_job() ?>
                      <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
-                            <div class="job-item p-4 mb-4">
+                            <!-- <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
                                         <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-1.jpg" alt="" style="width: 80px; height: 80px;">
@@ -303,7 +303,7 @@ include "../resources/templates/front/header.php"; ?>
                                 </div>
                             </div>
                             <a class="btn btn-primary py-3 px-5" href="">Browse More Jobs</a>
-                        </div>
+                        </div> -->
                         <!-- <div id="tab-2" class="tab-pane fade show p-0">
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
