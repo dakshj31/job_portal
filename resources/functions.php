@@ -313,7 +313,7 @@ echo $user_admin_job;
                                             <h5 class="mb-3">{$job_title}</h5>
                                             <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{$job_location}</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{$job_nature}</span>
-                                            <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>{$job_salary}</span>
+                                            <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>&#8377;{$job_salary}</span>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
