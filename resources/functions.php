@@ -288,6 +288,37 @@ echo $user_admin_job;
 
     } 
 
+    function update_jobs() {
+
+        if(isset($_POST['update'])) {
+
+        $title =  $_POST['job_title'];
+        $description = $_POST['job_description'];
+        $vacancy = $_POST['job_vacancy'];
+        $nature = $_POST['job_nature'];
+        $knowledge = $_POST['job_knowledge'];
+        $skills = $_POST['job_skills'];
+        $education = $_POST['job_education'];
+        $experience = $_POST['job_experience'];
+        $salary = $_POST['job_salary'];
+        $location = $_POST['job_location'];
+
+            $query = "UPDATE jobs SET title = '{$title}', description = '{$description}', vacancy = '{$vacancy}', nature = '{$nature}', knowledge = '{$knowledge}', skills = '{$skills}', education = '{$education}', experience = '{$experience}', salary = '{$salary}', location = '{$location}' ";
+            $query .= "WHERE id =" . escape_string($_GET['id']);
+            $update_job_query = query($query);
+            confirm($update_job_query);
+
+            set_message("Job has been updated");
+            redirect("company-index.php");
+
+
+
+
+
+        }
+
+    }
+
     function get_posted_job() {
 
         $query = query("SELECT * FROM jobs LIMIT 4");
