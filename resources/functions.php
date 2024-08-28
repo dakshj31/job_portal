@@ -363,4 +363,34 @@ echo $featured_jobs;
         }
     }
     
+function count_jobs() {
+    $query = query("SELECT id FROM jobs");
+    confirm($query);
+
+    $jobs_count = mysqli_num_rows($query);
+
+    echo $jobs_count;
+}
+
+
+
+function count_companies() {
+    $query = query("SELECT user_id FROM user");
+    confirm($query);
+
+    $company_count = mysqli_num_rows($query);
+
+    echo $company_count;
+}
+
+
+function count_candidates() {
+    $query = query("SELECT user_id FROM user");
+    confirm($query);
+
+    $candidate_count = mysqli_num_rows($query);
+
+    echo $candidate_count;
+}
+
     ?>
