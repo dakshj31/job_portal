@@ -29,7 +29,7 @@ include "../resources/templates/front/header.php"; ?>
             </tr>
         </thead>
         <tbody>
-            <?php //get_jobs_site_admin(); ?>
+            <?php get_jobs_site_admin(); ?>
         </tbody>
     </table>
 </div>

@@ -1,6 +1,5 @@
-<?php include "../../resources/db.php";
-include "includes/header.php";
-include "includes/top-nav.php";
+<?php include "../resources/db.php";
+include "../resources/templates/front/header.php";
 
 /***  job details query  ***/
 if (isset($_GET['id'])) {
@@ -115,4 +114,4 @@ if (isset($_GET['id'])) {
         <!-- Job Detail End -->
 
 
-        <?php include "includes/footer.php";?>
+        <?php include "../resources/templates/front/footer.php"; ?>

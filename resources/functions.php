@@ -393,6 +393,44 @@ function count_candidates() {
     echo $candidate_count;
 }
 
+function get_jobs_site_admin(){
+    
+    $query = query("SELECT * FROM jobs");
+    confirm($query);
 
+    while ($row = fetch_array($query)) {
+
+        $admin_all_job = <<<DELIMETER
+<tr>
+<td>{$row['id']}</td>
+<td>{$row['title']}</td>
+<td>{$row['description']}</td>
+<td>{$row['company_name']}</td>
+<td>
+        <div class="send-activate activate_job">
+            <a href="admin/activate_job.php?id={$row['id']}"><button name="activate_job" type="activate-job" class="btn btn-primary">Activate !</button></a>
+        </div>
+        <br>
+         <div class="send-activate activate_job">
+            <a href="admin/deactivate_job.php?id={$row['id']}"><button name="deactivate_job" type="deactivate-job" class="btn btn-primary">Deactivate !</button></a>
+        </div>
+        <td>
+        <div class="header-btn d-none d-lg-block">
+            <a href="job-detail.php?id={$row['id']}" class="btn btn-primary">View</a>
+        </div>
+    </td>
+     <td>
+        <div class="header-btn d-none d-lg-block job_delete">
+            <a href="admin/admin_delete_jobs.php?id={$row['id']}" class="btn btn-primary">Delete</a>
+        </div>
+    </td>
+</tr>
+
+
+DELIMETER;
+
+echo $admin_all_job;
+    }
+}
 
     ?>
