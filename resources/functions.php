@@ -393,4 +393,6 @@ function count_candidates() {
     echo $candidate_count;
 }
 
+
+
     ?>

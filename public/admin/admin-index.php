@@ -34,7 +34,7 @@ if(!isset($_SESSION['username']) ) {
                 <li><i class="fas fa-briefcase" style="font-size: 80px;"></i>
                     TOTAL JOBS POSTED ===============================================> <?php count_jobs(); ?> Jobs !
                         
-                            <a href="admin_jobs.php" class="btn btn-primary">View All Jobs !</a>
+                            <a href="../admin_jobs.php" class="btn btn-primary">View All Jobs !</a>
                         
                     
                 </li>
