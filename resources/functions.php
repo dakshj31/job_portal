@@ -319,9 +319,42 @@ echo $user_admin_job;
 
     }
 
+    function get_jobs() {
+
+        $query = query("SELECT * FROM jobs WHERE status ='0' ");
+        confirm($query);
+
+        while ($row = fetch_array($query)) {
+
+            $user_admin_jobs = <<<DELIMETER
+            
+            <tr>
+    <td>{$row['id']}</td>
+    <td>{$row['title']}</td>
+    <td>{$row['company_name']}</td>
+    <td>{$row['description']}</td>
+    <td>&#8377;{$row['salary']}</td>
+    <td>{$row['location']}</td>
+    <td>{$row['created at']}</td>
+    <td>
+        <div class="header-btn d-none f-right d-lg-block">
+            <a href="job-detail.php?id={$row['id']}" class="btn btn-primary">View</a>
+        </div>
+    </td>
+</tr>
+            
+DELIMETER;
+            echo $user_admin_jobs;
+        }
+
+
+    }
+
+
+
     function get_posted_job() {
 
-        $query = query("SELECT * FROM jobs LIMIT 4");
+        $query = query("SELECT * FROM jobs WHERE status ='0' LIMIT 4");
         confirm($query);
 
         while ($row = fetch_array($query)) {
