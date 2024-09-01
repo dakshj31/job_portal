@@ -42,7 +42,7 @@ if(!isset($_SESSION['username']) ) {
                 <li><i class="fas fa-building" style="font-size: 80px;"></i>
                     TOTAL COMPANIES REGISTERED ======================================> <?php count_companies(); ?> Companies !
                         
-                    <a href="add_jobs.php" class="btn btn-primary"> View All Companies</a>
+                    <a href="../admin_companies.php" class="btn btn-primary"> View All Companies</a>
                       
                 </li>
                 <hr>

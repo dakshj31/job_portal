@@ -466,4 +466,50 @@ echo $admin_all_job;
     }
 }
 
+function get_all_companies_admin() {
+    
+    $query = query("SELECT * FROM user WHERE role = 'Company' ");
+    confirm($query);
+
+    while ($row = fetch_array($query)) {
+
+        $company_id = $row['user_id'];
+        $admin_all_companies = <<<DELIMETER
+
+<tr>
+<td>{$row['username']}</td>
+<td>{$row['email']}</td>
+ <td>
+        <div class="send-activate activate_company">
+            <a href="admin/activate_company.php?id={$company_id}"><button name="activate_company" type="activate-company" class="btn btn-primary">Activate !</button></a>
+        </div>
+        <br>
+        <div class="send-deactivate deactivate_company">
+            <a href="admin/deactivate_company.php?id={$company_id}"><button name="deactivate_company" type="deactivate-company" class="btn btn-primary">Deactivate !</button></a>
+        </div>
+    </td>
+    <td>
+        <div class="header-btn d-none d-lg-block">
+            <a href="admin_company_profile.php?id={$company_id}" class="btn btn-primary">Update</a>
+        </div>
+    </td>
+    <td>
+        <div class="header-btn d-none d-lg-block">
+            <a href="company_details.php?id={$company_id}" class="btn btn-primary">View</a>
+        </div>
+    </td>
+    <td>
+        <div class="header-btn d-none d-lg-block company_delete">
+            <a href="admin/delete_company.php?id={$company_id}" class="btn btn-primary">Delete</a>
+        </div>
+    </td>
+</tr>
+DELIMETER;
+
+echo $admin_all_companies;
+    
+
+}
+}
+
     ?>
