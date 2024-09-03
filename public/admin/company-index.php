@@ -52,7 +52,9 @@ if(!isset($_SESSION['username']) ) {
 <!-- Add Button -->
 <div class="text-center">
 <a href="add_jobs.php" class="btn btn-primary">Add New Job</a>
+<a href="add_jobs.php" class="btn btn-primary">Update Your Profile</a>
 </div>
+
 <!-- Add Button Ends -->
 <br>
 

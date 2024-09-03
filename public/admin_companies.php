@@ -19,7 +19,7 @@ include "../resources/templates/front/header.php"; ?>
             <tr>
                 <th>Name</th>
                 <th>Email</th>
-                <!-- <th>Description</th> -->
+                <th>Description</th>
                 <th>Status</th>
                 <th>Update</th>
                 <th>View Company</th>
