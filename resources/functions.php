@@ -193,7 +193,7 @@ function fetch_array($result) {
             $temp_image = $_FILES['file2']['tmp_name'];
             
             move_uploaded_file($temp_cv, "candidate_cv/$cv");
-            move_uploaded_file($temp_image, "images/$image");
+            move_uploaded_file($temp_image, "uploads/$image");
 
             if(empty($image)) {
 
@@ -201,7 +201,7 @@ function fetch_array($result) {
                 $query = query("SELECT * FROM user WHERE username ='{$username}' ");
 
                 while ($row = fetch_array($query)) {
-                    $image = $row['image'];
+                   $image = $row['image'];
                 }
             }
 
@@ -211,9 +211,27 @@ function fetch_array($result) {
             confirm($query);
 
             set_message("Your profile has been submitted");
-            redirect("candidate-index.php");
+            redirect("admin/candidate-index.php");
         }
 
+    }
+
+    function company_profile_update() {
+
+        if (isset($_POST['update'])) {
+
+            $description = $_POST['company_description'];
+            $capacity = $_POST['company_employees'];
+            $location = $_POST['company_location'];      
+
+            $query = "UPDATE user SET description = '{$description}', capacity = '{$capacity}', location = '{$location}' ";
+            $query .= "WHERE username = '{$_SESSION['username']}' ";
+            $update_profile_query = query($query);
+            confirm($update_profile_query);
+
+            set_message("Your profile has been updated");
+            redirect("admin/company-index.php");
+        }
     }
 
     function add_jobs(){
@@ -479,6 +497,7 @@ function get_all_companies_admin() {
 <tr>
 <td>{$row['username']}</td>
 <td>{$row['email']}</td>
+<td>{$row['description']}</td>
  <td>
         <div class="send-activate activate_company">
             <a href="admin/activate_company.php?id={$company_id}"><button name="activate_company" type="activate-company" class="btn btn-primary">Activate !</button></a>

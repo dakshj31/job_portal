@@ -1,13 +1,7 @@
 <?php include "../resources/db.php"; 
-include "../resources/templates/front/header.php"; 
+include "../resources/templates/front/header.php";  
 
-
-
-if(!isset($_SESSION['username']) ) {
-    redirect("index.php");
-} ?>
-
-<?php if (isset($_SESSION['username'])) {
+ if (isset($_SESSION['username'])) {
 
     $username = $_SESSION['username'];
 
@@ -75,6 +69,7 @@ if(!isset($_SESSION['username']) ) {
                     <div class="form-group">
                         <label for="image">IMAGE</label>
                         <input type="file" name="file2"><br>
+                        <img width="100" src="uploads/<?php echo $image; ?>" alt="">
                     </div>
                     <hr>
 
