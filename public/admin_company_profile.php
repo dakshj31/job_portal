@@ -29,7 +29,7 @@ if (isset($_GET['id'])) {
     <br>
 
     <form action="" method="post" enctype="multipart/form-data">
-        <?php //update_profile_company_admin(); ?>
+        <?php update_profile_company_admin(); ?>
 
         <div class="col-md-6">
 
@@ -38,14 +38,12 @@ if (isset($_GET['id'])) {
                 <textarea type="text" name="company_description" id="" cols="30" rows="10" class="form-control"><?php echo $description; ?></textarea>
             </div>
 
-<br>
+
 
             <div class=" form-group">
                 <label for="job-salary">EMPLOYEES</label>
                 <input type="text" name="company_employees" class="form-control" value="<?php echo $capacity; ?>">
             </div>
-
-<br>
 
             <div class="form-group">
                 <label for="job-location">ADDRESS</label>

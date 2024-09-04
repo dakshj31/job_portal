@@ -262,6 +262,26 @@ function fetch_array($result) {
 
     function update_profile_company_admin(){
 
+        if(isset($_POST['update'])) {
+
+            $company_id = $_GET['id'];
+            $description = $_POST['company_description'];
+            $capacity= $_POST['company_employees'];
+            $location = $_POST['company_location'];
+
+            $query = query("SELECT * FROM user WHERE user_id = '{$company_id}' ");
+            while ($row = fetch_array($query)) {
+                $company_name = $row['username'];
+            }
+
+            $query = "UPDATE user SET description = '{$description}', capacity = '{$capacity}', location = '{$location}' ";
+            $query .= "WHERE user_id = '{$company_id}' ";
+            $update_profile_query = query($query);
+            confirm($update_profile_query);
+
+            set_message("Company profile has been updated");
+            redirect("admin_companies.php");
+        }
 
     }
  
