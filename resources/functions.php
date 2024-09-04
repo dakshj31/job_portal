@@ -259,6 +259,11 @@ function fetch_array($result) {
 
         }
     }
+
+    function update_profile_company_admin(){
+
+
+    }
  
 
     function get_jobs_company_admin()
@@ -497,7 +502,7 @@ function get_all_companies_admin() {
 <tr>
 <td>{$row['username']}</td>
 <td>{$row['email']}</td>
-<td>{$row['description']}</td>
+<td>{$row['description']}</td>                  
  <td>
         <div class="send-activate activate_company">
             <a href="admin/activate_company.php?id={$company_id}"><button name="activate_company" type="activate-company" class="btn btn-primary">Activate !</button></a>
