@@ -556,4 +556,22 @@ echo $admin_all_companies;
 }
 }
 
+function job_company_details()
+{
+
+    $job_company_query = query("SELECT title FROM jobs WHERE company_id =" . escape_string($_GET['id']));
+    confirm($job_company_query);
+
+    while ($row = fetch_array($job_company_query)) {
+
+        $company_job = $row['title'];
+
+
+        $company_all_job = <<<DELIMETER
+            <li>{$company_job}</li>
+        DELIMETER;
+        echo $company_all_job;
+    }
+}
+
     ?>
