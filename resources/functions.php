@@ -556,6 +556,58 @@ echo $admin_all_companies;
 }
 }
 
+function get_all_candidates_admin() {
+
+    $query = query("SELECT * FROM user Where role = 'Candidate' ");
+    confirm($query);
+
+    while ($row = fetch_array($query)) {
+
+        $candidate_id = $row['user_id'];
+        $admin_all_candidates = <<<DELIMETER
+
+        <tr>
+<td>{$row['username']}</td>
+<td>{$row['email']}</td>
+<td>{$row['description']}</td>                  
+ <td>
+        <div class="send-activate activate_candidate">
+            <a href="admin/activate_candidate.php?id={$candidate_id}"><button name="activate_candidate" type="activate-candidate" class="btn btn-primary">Activate !</button></a>
+        </div>
+        <br>
+        <div class="send-deactivate deactivate_candidate">
+            <a href="admin/deactivate_candidate.php?id={$candidate_id}"><button name="deactivate_candidate" type="deactivate-candidate" class="btn btn-primary">Deactivate !</button></a>
+        </div>
+    </td>
+    <td>
+        <div class="header-btn d-none d-lg-block">
+            <a href="admin_candidate_profile.php?id={$candidate_id}" class="btn btn-primary">Update</a>
+        </div>
+    </td>
+    <td>
+        <div class="header-btn d-none d-lg-block">
+            <a href="candidate_details.php?id={$candidate_id}" class="btn btn-primary">View</a>
+        </div>
+    </td>
+    <td>
+        <div class="header-btn d-none d-lg-block company_delete">
+            <a href="admin/delete_candidate.php?id={$candidate_id}" class="btn btn-primary">Delete</a>
+        </div>
+    </td>
+</tr>
+
+DELIMETER;
+
+        echo $admin_all_candidates;
+    }
+
+
+
+}
+
+
+
+
 function job_company_details()
 {
 
