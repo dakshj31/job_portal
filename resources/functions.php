@@ -284,7 +284,10 @@ function fetch_array($result) {
         }
 
     }
+
  
+function update_candidate_profile_admin() {}
+
 
     function get_jobs_company_admin()
     {
