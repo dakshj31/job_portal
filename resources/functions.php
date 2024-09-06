@@ -53,6 +53,18 @@ function fetch_array($result) {
     return mysqli_fetch_array($result);
 }
 
+function IsLoggedIn()
+{
+    if (isset($_SESSION['username'])) {
+
+        return true;
+    } else {
+
+        return false;
+    }
+}
+
+
 
 
 
@@ -659,4 +671,25 @@ function job_company_details()
     }
 }
 
+
+function job_detail_page_link(){
+
+if(IsLoggedIn()) {
+
+    $user_type = $_SESSION['role'];
+}
+
+if(isset($_GET['id'])) {
+
+    if(isset($_GET['job_id'])) {
+
+    }
+}
+
+}
+    
+    
+    
+    
+    
     ?>
