@@ -286,7 +286,37 @@ function fetch_array($result) {
     }
 
  
-function update_candidate_profile_admin() {}
+function update_candidate_profile_admin() {
+
+    if(isset($_POST['update'])) {
+        $candidate_id = $_GET['id'];
+        $description = $_POST['candidate_description'];
+        $cv = $_FILES['file1']['name'];
+        $temp_cv = $_FILES['file1']['tmp_name'];
+        $knowledge = $_POST['candidate_knowledge'];
+        $skills = $_POST['candidate_skills'];
+        $education = $_POST['candidate_education'];
+        $experience = $_POST['candidate_experience'];
+        $image = $_FILES['file2']['name'];
+        $temp_image = $_FILES['file2']['tmp_name'];
+
+        move_uploaded_file($temp_cv, "uploads/$cv");
+        move_uploaded_file($temp_image, "uploads/$image");
+
+        $query = query("SELECT * FROM user WHERE user_id = '{$candidate_id}' ");
+        while ($row = fetch_array($query)) {
+            $candidate_name = $row['username'];
+        }
+
+        $profile_update = "UPDATE candidate SET description = '{$description}' , cv = '{$cv}' , knowledge = '{$knowledge}' , skills = '{$skills}' , education = '{$education}' , experience = '{$experience}' , image = '{$image}' ";
+        $profile_update .= "WHERE name = '{$candidate_name}' ";
+        $query = query($profile_update);
+        confirm($query);
+
+        set_message("Profile Updated !");
+        redirect("admin_candidates.php");
+    }
+}
 
 
     function get_jobs_company_admin()

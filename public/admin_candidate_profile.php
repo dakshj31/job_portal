@@ -41,7 +41,7 @@ if(isset($_GET['id'])) {
 
 
     <form action="" method="post" enctype="multipart/form-data">
-        <?php //update_candidate_profile_admin(); ?>
+        <?php update_candidate_profile_admin(); ?>
 
         <div class="col-md-6">
 
