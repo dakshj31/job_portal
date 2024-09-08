@@ -683,8 +683,68 @@ if(isset($_GET['id'])) {
 
     if(isset($_GET['job_id'])) {
 
+        $user_query = query("SELECT * FROM user where user_id =" . escape_string($_GET['id']));
+        confirm($user_query);
+
+        while( $row = fetch_array($user_query)) {
+            $candidate_id = $row['user_id'];
+            $candidate_name = $row['username'];
+
+
+
+
+            $query = query("SELECT cv FROM candidate WHERE name = '{$candidate_name}' ");
+            confirm($query);
+
+            while ($row = fetch_array($query)) {
+
+                $candidate_cv = $row['cv'];
+            }
+
+            if ($user_type == 'Company' ) {
+
+                $company_link = <<<DELIMETER
+
+                 <div class="candidate-details">
+                        <a href="candidate_cv/$candidate_cv"><button name="candidate_details" type="submit" class="btn head-btn1">View CV</button></a>
+                    </div>
+                    <br>
+                    <div class="send-accept">
+                        <a href="accept_application.php?id=$candidate_id&job_id={$_GET['job_id']}"><button name="accept_application" type="accept-application" class="btn head-btn1">Accept Application !</button></a>
+                    </div>
+                    <br>
+                    <div class="send-reject">
+                        <a href="reject_application.php?id=$candidate_id&job_id={$_GET['job_id']}"><button name="reject_application" type="reject-application" class="btn head-btn1">Reject Application !</button></a>
+                    </div>
+                    <br>
+                    <div class="send-message">
+                        <a href="candidate_message.php?id=$candidate_id"><button name="message_candidate" type="message_candidate" class="btn head-btn1">Message Candidate !</button></a>
+                    </div>
+
+                DELIMETER;
+                echo $company_link;
+           
+            } elseif ($user_type = 'Admin') {
+                
+                $admin_link = <<<DELIMETER
+
+                    <div class="candidate-details">
+                        <a href="candidate_cv/$candidate_cv"><button name="candidate_details" type="submit" class="btn head-btn1">View CV</button></a>
+                    </div>
+                    <br>
+                    <div class="send-message">
+                        <a href="candidate_message.php?id=$candidate_id"><button name="message_candidate" type="message_candidate" class="btn head-btn1">Message Candidate !</button></a>
+                    </div>
+
+                DELIMETER;
+                echo $admin_link;
+               }
+          
+           }
+      
+        }
+   
     }
-}
 
 }
     

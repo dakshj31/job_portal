@@ -20,12 +20,12 @@ if(isset($_GET['id'])) {
     while($row = fetch_array($details_query)) {
 
         $candidate_description = $row['description'];
-        $candidate_description = $row['cv'];
-        $candidate_description = $row['knowledge'];
-        $candidate_description = $row['skills'];
-        $candidate_description = $row['education'];
-        $candidate_description = $row['experience'];
-        $candidate_description = $row['image'];
+        $candidate_cv = $row['cv'];
+        $candidate_knowledge = $row['knowledge'];
+        $candidate_skills = $row['skills'];
+        $candidate_education = $row['education'];
+        $candidate_experience = $row['experience'];
+        $candidate_image = $row['image'];
     }
 }
 
@@ -121,7 +121,7 @@ if(isset($_GET['id'])) {
                                 Please find my Resume attached under .</span></li>
                     </ul>
 
-                    <?php //job_detail_page_link(); ?>
+                    <?php job_detail_page_link(); ?>
 
                 </div>
             </div>
