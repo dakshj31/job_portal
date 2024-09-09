@@ -64,6 +64,56 @@ function IsLoggedIn()
     }
 }
 
+    //==================LINK FUNCTIONS=============//
+function admin_link_user_type_home()
+{
+ 
+    if (IsLoggedIn()) {
+        
+        $user_id  = $_SESSION['user_id'];
+        $username = $_SESSION['username'];
+
+        $admin_usertype_query = query("SELECT role FROM user WHERE username = '{$username}' ");
+        confirm($admin_usertype_query);
+
+        while ($row = mysqli_fetch_array($admin_usertype_query)) {
+
+            $usertype = $row['role'];
+        }
+
+        if ($usertype == "Candidate") {
+
+            $candidate_admin = <<<DELIMETER
+                <li><a href="job_listing"><i class="fas fa-briefcase"></i> Find a Job</a></li>
+                <li><a href="admin/candidate-index.php"><i class="fas fa-user"></i> Admin</a></li>
+                <li><a href="candidate_applications.php"><i class="fas fa-bell"></i> Applications</a></li>
+            DELIMETER;
+            echo $candidate_admin;
+        } elseif ($usertype == "Company") {
+
+            $company_admin = <<<DELIMETER
+                <li><a href="admin/company-index.php"><i class="fas fa-user"></i> Admin</a></li>
+                <li><a href="company_applications.php"><i class="fas fa-bell"></i> Applications</a></li>
+            DELIMETER;
+            echo $company_admin;
+        } else {
+         
+            $admin = <<<DELIMETER
+                 <li><a href="admin/admin-index.php"><i class="fas fa-user"></i> Admin</a></li>
+                <li><a href="admin_jobs.php"><i class="fas fa-briefcase"></i> Jobs</a></li>
+                <li><a href="admin_companies.php"><i class="fas fa-building"></i> Companies</a></li>
+                <li><a href="admin_candidates.php"><i class="fas fa-address-card"></i> Candidates</a></li>
+            DELIMETER;
+            echo $admin;
+        }
+    } else {
+        $find_job_button = <<<DELIMETER
+               <li><a href="job_listing"><i class="fas fa-briefcase"></i> Find a Job</a></li>
+        DELIMETER;
+    }
+}
+
+
 
 
 

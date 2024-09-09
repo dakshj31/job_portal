@@ -1,5 +1,5 @@
 <?php include "../resources/db.php"; 
-include "../resources/templates/front/header.php"; ?>
+include "../resources/header.php"; ?>
 
         <!-- Carousel Start -->
         <div class="container-fluid p-0">
@@ -246,5 +246,5 @@ include "../resources/templates/front/header.php"; ?>
         </div>
         <!-- Testimonial End -->
         
-        <?php include "../resources/templates/front/footer.php"; ?>
+        <?php include "../resources/footer.php"; ?>
         

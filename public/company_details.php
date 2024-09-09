@@ -1,5 +1,5 @@
 <?php include "../resources/db.php"; 
-include "../resources/templates/front/header.php"; 
+include "../resources/header.php"; 
 
 /******GET COMPANY DATA ******/
 
@@ -98,4 +98,4 @@ if(isset($_GET['id'])) {
 </main>
 
 
-<?php include "../resources/templates/front/footer.php"; ?>
+<?php include "../resources/footer.php"; ?>

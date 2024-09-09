@@ -1,5 +1,5 @@
 <?php include "../resources/db.php";
-include "../resources/templates/front/header.php"; ?>
+include "../resources/header.php"; ?>
 
         <!-- Header End -->
         <div class="container-xxxl py-5 bg-dark page-header mb-5">
@@ -75,4 +75,4 @@ include "../resources/templates/front/header.php"; ?>
 </main>
 
 
-        <?php include "../resources/templates/front/footer.php"; ?>
+        <?php include "../resources/footer.php"; ?>

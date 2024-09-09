@@ -1,7 +1,6 @@
 
 <?php include "../resources/db.php"; 
-include "../resources/templates/front/header.php"; 
-// include "../resources/functions.php"; ?>
+include "../resources/header.php";  ?>
 
 <body>
     <div class="container-xxl bg-white p-0">
@@ -39,4 +38,4 @@ include "../resources/templates/front/header.php";
 </body>
 
 
-<?php include "../resources/templates/front/footer.php"; ?>
+<?php include "../resources/footer.php"; ?>

@@ -1,6 +1,6 @@
 <?php 
 include "../resources/db.php";
-include "../resources/templates/front/header.php"; 
+include "../resources/header.php"; 
 
 register_user();
 ?> 
@@ -45,4 +45,4 @@ register_user();
 
 </html>
 
-<?php include "../resources/templates/front/footer.php"; ?>
+<?php include "../resources/footer.php"; ?>

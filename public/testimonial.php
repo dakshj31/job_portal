@@ -1,4 +1,4 @@
-<?php include "../resources/templates/front/header.php"; ?>
+<?php include "../resources/header.php"; ?>
 
 
         <!-- Header End -->
@@ -72,4 +72,4 @@
         <!-- Testimonial End -->
 
 
-        <?php include "../resources/templates/front/footer.php"; ?>
+        <?php include "../resources/footer.php"; ?>
