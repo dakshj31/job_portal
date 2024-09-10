@@ -84,38 +84,227 @@ function admin_link_user_type_home()
         if ($usertype == "Candidate") {
 
             $candidate_admin = <<<DELIMETER
-                <li><a href="job_listing"><i class="fas fa-briefcase"></i> Find a Job</a></li>
-                <li><a href="admin/candidate-index.php"><i class="fas fa-user"></i> Admin</a></li>
-                <li><a href="candidate_applications.php"><i class="fas fa-bell"></i> Applications</a></li>
+                <a href="job-list.php" class="nav-item nav-link"> Find a Job</a>
+                <a href="admin/candidate-index.php" class="nav-item nav-link"> Admin</a>
+                <a href="candidate_applications.php" class="nav-item nav-link"> Applications</a>
             DELIMETER;
             echo $candidate_admin;
         } elseif ($usertype == "Company") {
 
             $company_admin = <<<DELIMETER
-                <li><a href="admin/company-index.php"><i class="fas fa-user"></i> Admin</a></li>
-                <li><a href="company_applications.php"><i class="fas fa-bell"></i> Applications</a></li>
+                <a href="admin/company-index.php" class="nav-item nav-link"> Admin</a>
+                <a href="company_applications.php" class="nav-item nav-link"> Applications</a>
             DELIMETER;
             echo $company_admin;
         } else {
          
             $admin = <<<DELIMETER
-                 <li><a href="admin/admin-index.php"><i class="fas fa-user"></i> Admin</a></li>
-                <li><a href="admin_jobs.php"><i class="fas fa-briefcase"></i> Jobs</a></li>
-                <li><a href="admin_companies.php"><i class="fas fa-building"></i> Companies</a></li>
-                <li><a href="admin_candidates.php"><i class="fas fa-address-card"></i> Candidates</a></li>
+                <a href="admin/admin-index.php"  class="nav-item nav-link"> Admin</a>
+                <a href="admin_jobs.php" class="nav-item nav-link"> Jobs</a>
+                <a href="admin_companies.php" class="nav-item nav-link"> Companies</a>
+                <a href="admin_candidates.php" class="nav-item nav-link"> Candidates</a>
             DELIMETER;
             echo $admin;
         }
     } else {
         $find_job_button = <<<DELIMETER
-               <li><a href="job_listing"><i class="fas fa-briefcase"></i> Find a Job</a></li>
+               <a href="job-list" class="nav-item nav-link"> Find a Job</a>
         DELIMETER;
     }
 }
 
 
 
+function admin_link_user_type_admin() {
 
+    if (IsLoggedIn()) {
+        $user_id  = $_SESSION['user_id'];
+        $username = $_SESSION['username'];
+
+        $admin_usertype_query = query("SELECT role FROM user WHERE username = '{$username}' ");
+        confirm($admin_usertype_query);
+
+        while ($row = mysqli_fetch_array($admin_usertype_query)) {
+
+            $usertype = $row['role'];
+        }
+
+        if ($usertype == "Candidate") {
+
+            $candidate_admin = <<<DELIMETER
+                <a href="../job-list.php" class="nav-item nav-link"> Find a Job</a>
+                <a href="candidate-index.php" class="nav-item nav-link"> Admin</a>
+                <a href="../candidate_applications.php" class="nav-item nav-link"> Applications</a>
+            DELIMETER;
+            echo $candidate_admin;
+        } elseif ($usertype == "Company") {
+
+            $company_admin = <<<DELIMETER
+                <a href="company-index.php" class="nav-item nav-link"> Admin</a>
+                <a href="../company_applications.php" class="nav-item nav-link"> Applications</a>
+            DELIMETER;
+            echo $company_admin;
+        } else {
+         
+            $admin = <<<DELIMETER
+                <a href="admin-index.php"  class="nav-item nav-link"> Admin</a>
+                <a href="../admin_jobs.php" class="nav-item nav-link"> Jobs</a>
+                <a href="../admin_companies.php" class="nav-item nav-link"> Companies</a>
+                <a href="../admin_candidates.php" class="nav-item nav-link"> Candidates</a>
+            DELIMETER;
+            echo $admin;
+        }
+    } else {
+        $find_job_button = <<<DELIMETER
+               <a href="job-list" class="nav-item nav-link"> Find a Job</a>
+        DELIMETER;
+        echo $find_job_button;
+    }
+}
+
+
+function profile_link_homepage() {
+    
+    if (IsLoggedIn()) {
+
+        $user_id = $_SESSION['user_id'];
+        $username = $_SESSION['username'];
+
+        $admin_usertype_query = query("SELECT role FROM user WHERE username = '{$username}' ");
+        confirm($admin_usertype_query);
+
+        while ($row = mysqli_fetch_array($admin_usertype_query)) {
+
+           $usertype = $row['role'];
+        }
+
+if ($usertype == "Candidate") {
+
+    $candidate_profile = <<<DELIMETER
+        <a href="candidate-profile.php?id={$user_id}" class="nav-item nav-link"> Profile</a>
+  DELIMETER;
+    echo $candidate_profile;
+
+} elseif ($usertype == "Company") {
+
+    $company_profile = <<<DELIMETER
+        <a href="company-profile.php?id={$user_id}" class="nav-item nav-link"> Profile</a>
+    DELIMETER;
+    echo $company_profile;
+        
+
+    }
+    }
+}
+
+
+function profile_link_admin() {
+
+    if (IsLoggedIn()) {
+
+        $user_id = $_SESSION['user_id'];
+        $username = $_SESSION['username'];
+
+        $admin_usertype_query = query("SELECT role FROM user WHERE username = '{$username}' ");
+        confirm($admin_usertype_query);
+
+        while ($row = mysqli_fetch_array($admin_usertype_query)) {
+
+           $usertype = $row['role'];
+        }
+
+if ($usertype == "Candidate") {
+
+    $candidate_profile = <<<DELIMETER
+        <a href="../candidate-profile.php?id={$user_id}" class="nav-item nav-link"> Profile</a>
+  DELIMETER;
+    echo $candidate_profile;
+
+} elseif ($usertype == "Company") {
+
+    $company_profile = <<<DELIMETER
+        <a href="../company_profile.php?id={$user_id}" class="nav-item nav-link"> Profile</a>
+    DELIMETER;
+    echo $company_profile;
+        
+
+    }
+    }
+
+}
+
+function login_find_add_job_link() {
+
+    if(IsLoggedIn()) {
+
+        $username = $_SESSION['username'];
+
+        $query = query("SELECT role FROM user WHERE username = '{$username}' ");
+        confirm($query);
+
+        while($row = mysqli_fetch_array($query)) {
+            $usertype = $row['role'];
+        }
+        if ($usertype == "Candidate") {
+
+            $candidate_homepage = <<<DELIMETER
+                <a href="job-list.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft"> Search A Job</a>
+          DELIMETER;
+            echo $candidate_homepage;
+        
+        } elseif ($usertype == "Company") {
+        
+            $company_profile = <<<DELIMETER
+                <a href="admin/add_jobs.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft"> Post A New Job</a>
+            DELIMETER;
+            echo $company_profile;
+                
+        
+            } else {
+                $admin_homepage = <<<DELIMETER
+                    <a href="admin/admin_index.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft"> View Data</a>
+                DELIMETER;
+                echo $admin_homepage;
+            } 
+    } else {
+        $login_link = <<<DELIMETER
+                 <a href="login.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft"> Login To Apply</a>
+        DELIMETER;
+        echo $login_link;
+    }
+} 
+
+function show_login_logout_admin() {
+    
+    if(IsLoggedIn()) {
+        $logout = <<<DELIMETER
+           <a href="../logout.php" class="nav-item nav-link"> Log Out</a>
+        DELIMETER;
+        echo $logout;
+    
+    } else {
+
+        $login = <<<DELIMETER
+
+            <a href="registration" class="nav-item nav-link">Register</a>
+            <a href="login" class="nav-item nav-link">Login</a>
+        DELIMETER;
+    }
+}
+
+function show_login_logout_homepage() {
+    
+    if(IsLoggedIn()) {
+
+    }else {
+        $login = <<<DELIMETER
+            
+            <a href="login.php" class="nav-item nav-link">Login</a>
+
+        DELIMETER;
+        echo $login;
+        }
+}
 
 
     //=========================Front End Function=====================================//
@@ -402,7 +591,7 @@ function update_candidate_profile_admin() {
 <td>{$row['location']}</td>
 <td>
 <div class="header-btn d-none d-lg-block">
-<a href="job-detail.php?id={$row['id']}" class="">View</a>
+<a href="../job-detail.php?id={$row['id']}" class="">View</a>
 </div>
 </td>
 <td>

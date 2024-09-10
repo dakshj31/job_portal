@@ -11,25 +11,6 @@ include "../resources/header.php"; ?>
         </div>
         <!-- Header End -->
 
-
-        <!-- Jobs Start -->
-        <!-- Jobs Start -->
-        <!-- <div class="container-xxl py-5">
-            <div class="container">
-                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job Listing</h1>
-                <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
-                    <?php //get_jobs(); ?>
-                     <div class="tab-content">
-                        <div id="tab-1" class="tab-pane fade show p-0 active">
-                           
-                    </div>
-                </div>
-            </div>
-        </div>  -->
-        <!-- Jobs End -->
-        <!-- Jobs End -->
-
-
         <div class="job-listing-area pt-120 pb-120">
         <div class="container">
             <div class="row">

@@ -13,26 +13,27 @@
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
                     <a href="index.php" class="nav-item nav-link active">Home</a>
                     <?php admin_link_user_type_home(); ?>
-                    <a href="about.php" class="nav-item nav-link">About</a>
-                    <div class="nav-item dropdown">
+                    <?php profile_link_homepage(); ?>
+                    
+                    
+                    
+                    <!-- <div class="nav-item dropdown">
                         <a href="job-list.php" class="nav-item nav-link">Jobs</a>
                         
-                    </div>
+                    </div> -->
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="category.php" class="dropdown-item">Job Category</a>
                             <a href="testimonial.php" class="dropdown-item">Testimonial</a>
                             <a href="404.php" class="dropdown-item">404</a>
+                            <a href="about.php" class="dropdown-item">About</a>
+                            <a href="contact.php" class="dropdown-item">Contact</a>
                         </div>
                     </div>
-                    <a href="contact.php" class="nav-item nav-link">Contact</a>
-                    <a href="login.php" class="nav-item nav-link ">Login</a>
-                    <a href="registration.php" class="nav-item nav-link ">Register</a>
-                    <!-- <a href="admin/admin_index.php" class="nav-item nav-link ">Admin</a> -->
-                    
+                    <?php show_login_logout_homepage(); ?>
                 </div>
-                <!-- <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block"><i class="fa fa-arrow-right ms-3"></i></a> -->
+                
             </div>
         </nav>
         <!-- Navbar End -->

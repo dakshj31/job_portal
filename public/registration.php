@@ -45,4 +45,4 @@ register_user();
 
 </html>
 
-<?php include "../resources/footer.php"; ?>
+<?php include "../resources/short_footer.php"; ?>
