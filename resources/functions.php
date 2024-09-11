@@ -891,6 +891,48 @@ DELIMETER;
 
 
 
+function apply_button_in_job_details() {
+
+    if(IsLoggedIn()) {
+
+        $username = $_SESSION['username'];
+
+        $user_query = query("SELECT role FROM user WHERE username = '{$username}' ");
+        confirm($user_query);
+
+        while ($row = fetch_array($user_query)) {
+
+            $usertype = $row['role'];
+        }
+
+        $job_query = query("SELECT id FROM jobs WHERE id =" . escape_string($_GET['id']));
+        confirm($job_query);
+
+        if ($usertype == 'Candidate') {
+
+            $candidate_button = <<<DELIMETER
+                <div class="apply-btn2 job_apply">
+                <a href="apply_job.php?id={$_GET['id']}"><button name="apply" type="submit" class="btn btn-primary">Apply Now !</button></a>
+                </div>
+
+            DELIMETER;
+            echo $candidate_button;
+        }
+    } else {
+
+        $apply_login_button = <<<DELIMETER
+        
+            <div class="apply-btn2">
+            <a href="login.php"><button name="apply" type="submit" class="btn btn-primary">Apply Now !</button></a>
+            </div>
+
+        DELIMETER; 
+        echo $apply_login_button;
+    }
+}
+
+
+
 
 function job_company_details()
 {

@@ -9,12 +9,11 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
                     <a href="../index.php" class="nav-item nav-link active">Home</a>
-                    <?php admin_link_user_type_admin(); ?>
-                    <?php profile_link_admin(); ?>
-                    </div>
-                    <?php show_login_logout_admin(); ?>
+                    <?php admin_link_user_type_admin(); 
+                     profile_link_admin(); 
+                     show_login_logout_admin(); ?>
                    
-                  
+                    </div>
                     
                     
                 </div>
