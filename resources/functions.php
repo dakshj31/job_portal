@@ -932,7 +932,44 @@ function apply_button_in_job_details() {
 }
 
 
+function view_button_job_detail() {
 
+     if(IsLoggedIn()){
+
+        $username = $_SESSION['username'];
+        
+        $user_query = ("SELECT role FROM user WHERE username = '{$username}' ");
+        confirm($user_query);
+
+        while ($row = fetch_array($user_query)) {
+            $usertype = $row['role'];
+        }
+
+        $job_query = query("SELECT company_id FROM jobs WHERE id =" . escape_string($_GET['id']));
+        confirm($job_query);
+
+        while ($row = fetch_array($job_query)) {
+            $company_id = $row['company_id'];
+        }
+
+        if ($usertype == "Candidate") {
+
+            $candidate_button = <<<DELIMETER
+            <div class="company-details">
+            <a href="company_details.php?id=$company_id"><button name="company_details" type="submit" class="btn btn-primary">View Details !</button></a>
+            </div>
+            DELIMETER;
+            echo $candidate_button;
+        }
+     } else {
+        $apply_login_button = <<<DELIMETER
+        <div class="company-details">
+                    <a href="login.php"><button name="company_details" type="submit" class="btn btn-primary">View Details !</button></a>
+                </div>
+DELIMETER;
+echo $apply_login_button;
+     }
+}
 
 function job_company_details()
 {

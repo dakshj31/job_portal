@@ -80,7 +80,7 @@ if (isset($_GET['id'])) {
                             <form>
                                 <div class="row g-3">
                                 <div class="text-center">
-<!-- <a href="#" class="btn btn-primary">Apply Now</a> -->
+
 </div>
                                 </div>
                             </form>
@@ -104,7 +104,7 @@ if (isset($_GET['id'])) {
                             <h4 class="mb-4">Company Detail</h4>
                             <p class="m-0"> Name : <?php echo $company_name; ?></p>
                             <p class="m-0"> Email : <?php echo $company_email; ?></p>
-                            <p class="m-0"><?php ?></p>
+                            <p class="m-0"><?php view_button_job_detail(); ?></p>
                         </div>
                     </div>
                 </div>
