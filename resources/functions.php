@@ -1066,7 +1066,40 @@ if(isset($_GET['id'])) {
 
 }
     
-    
+ 
+function get_jobs_candidate_admin() {
+
+    $job_id_query = query("SELECT job_id FROM application WHERE user_id = '{$_SESSION['user_id']}' ");
+
+    while ($row = fetch_array($job_id_query)) {
+        $job_id = $row['job_id'];
+
+        $query = query("SELECT * FROM jobs WHERE id = '{$job_id}' AND status = '0' ");
+        confirm($query);
+
+        while ($row = fetch_array($query)) {
+
+            $candidate_selected_job = <<<DELIMETER
+            <tr>
+            <td>{$row['id']}</td>
+            <td>{$row['title']}</td>
+            <td>{$row['company_name']}</td>
+            <td>{$row['description']}</td>
+            <td>&#8377;{$row['salary']}</td>
+            <td>{$row['location']}</td>
+            <td>{$row['created at']}</td>
+            <td>
+            <div class="header-btn d-none d-lg-block">
+            <a href="../job-detail.php?id={$row['id']}" class="btn btn-primary">View</a>
+            </div>
+            </td>
+            </tr>
+
+            DELIMETER;
+            echo $candidate_selected_job;
+        }
+    }
+}
     
     
     

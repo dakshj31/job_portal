@@ -65,7 +65,7 @@ if(!isset($_SESSION['username']) ) {
             </tr>
         </thead>
         <tbody>
-            <?php //get_jobs_candidate_admin(); ?>
+            <?php get_jobs_candidate_admin(); ?>
         </tbody>
     </table>
 </div>

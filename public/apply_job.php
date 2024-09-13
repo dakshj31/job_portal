@@ -16,7 +16,7 @@ if(isset($_GET['id'])) {
     $user_id =  $_SESSION['user_id'];
     $username = $_SESSION['username'];
 
-    $job_apply_query = "INSERT INTO apllication( job_id , user_id , company_id ) VALUES( '{$job_id}' , '{$user_id}' , '{$company_id}' ) ";
+    $job_apply_query = "INSERT INTO application( job_id , user_id , company_id ) VALUES( '{$job_id}' , '{$user_id}' , '{$company_id}' ) ";
     $query = query($job_apply_query);
     confirm($query);
 
