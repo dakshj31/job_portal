@@ -3,6 +3,8 @@ include "../resources/header.php";
 
 /******GET COMPANY DATA ******/
 
+
+
 if(isset($_GET['id'])) {
 
     $query = query("SELECT * FROM user WHERE user_id =" . escape_string($_GET['id']));
@@ -41,7 +43,7 @@ if(isset($_GET['id'])) {
                 <div class="single-job-items mb-50">
                     <div class="job-items">
                         <div class="company-img company-img-details">
-                            <a href="company_details.php?id=<?php echo $company_id; ?>"><img width="100" src="images/<?php echo $company_image; ?>" alt=""></a>
+                            <a href="company_details.php?id=<?php echo $company_id; ?>"><img width="100" src="uploads/<?php echo $company_image; ?>" alt=""></a>
                         </div>
                         <div class="job-tittle">
                             <h1><?php echo $company_name; ?></h1>
@@ -70,11 +72,11 @@ if(isset($_GET['id'])) {
                         <h4><i class="far fa-list-alt" style="font-size: 30px;"></i> All jobs posted by <?php echo $company_name; ?> are :</h4>
                     </div>
                     <ul>
-                        <?php job_company_details(); ?>
+                    <?php job_company_details(); ?>
                     </ul>
                 </div>
             </div>
-
+            
 
             <!-- Right Content -->
             <div class="col-xl-4 col-lg-4">
@@ -84,7 +86,7 @@ if(isset($_GET['id'])) {
                         <h4><i class="far fa-address-card" style="font-size: 40px;"></i> COMPANY OVERVIEW...!!</h4>
                     </div>
                     <ul>
-                        <li><span>This is the official company account of <?php echo $company_name; ?> on nAukri.com , here we provide internships
+                        <li><span>This is the official company account of <?php echo $company_name; ?> on WorkHub , here we provide internships
                                 and jobs to the candidates who are suitable for our company and clear all our filters . The candidate has
                                 to apply for the job he/she is intrested in and if candidate's profile is selected , our team will connect
                                 to the candidate .</span></li>

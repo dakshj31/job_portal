@@ -84,22 +84,22 @@ function admin_link_user_type_home()
         if ($usertype == "Candidate") {
 
             $candidate_admin = <<<DELIMETER
+                <a href="admin/candidate-index.php" class="nav-item nav-link active"> Admin</a>
                 <a href="job-list.php" class="nav-item nav-link"> Find a Job</a>
-                <a href="admin/candidate-index.php" class="nav-item nav-link"> Admin</a>
                 <a href="candidate_applications.php" class="nav-item nav-link"> Applications</a>
             DELIMETER;
             echo $candidate_admin;
         } elseif ($usertype == "Company") {
 
             $company_admin = <<<DELIMETER
-                <a href="admin/company-index.php" class="nav-item nav-link"> Admin</a>
+                <a href="admin/company-index.php" class="nav-item nav-link active"> Admin</a>
                 <a href="company_applications.php" class="nav-item nav-link"> Applications</a>
             DELIMETER;
             echo $company_admin;
         } else {
          
             $admin = <<<DELIMETER
-                <a href="admin/admin-index.php"  class="nav-item nav-link"> Admin</a>
+                <a href="admin/admin-index.php"  class="nav-item nav-link active"> Admin</a>
                 <a href="admin_jobs.php" class="nav-item nav-link"> Jobs</a>
                 <a href="admin_companies.php" class="nav-item nav-link"> Companies</a>
                 <a href="admin_candidates.php" class="nav-item nav-link"> Candidates</a>
@@ -132,22 +132,22 @@ function admin_link_user_type_admin() {
         if ($usertype == "Candidate") {
 
             $candidate_admin = <<<DELIMETER
+                <a href="candidate-index.php" class="nav-item nav-link active"> Admin</a>
                 <a href="../job-list.php" class="nav-item nav-link"> Find a Job</a>
-                <a href="candidate-index.php" class="nav-item nav-link"> Admin</a>
                 <a href="../candidate_applications.php" class="nav-item nav-link"> Applications</a>
             DELIMETER;
             echo $candidate_admin;
         } elseif ($usertype == "Company") {
 
             $company_admin = <<<DELIMETER
-                <a href="company-index.php" class="nav-item nav-link"> Admin</a>
+                <a href="company-index.php" class="nav-item nav-link active"> Admin</a>
                 <a href="../company_applications.php" class="nav-item nav-link"> Applications</a>
             DELIMETER;
             echo $company_admin;
         } else {
          
             $admin = <<<DELIMETER
-                <a href="admin-index.php"  class="nav-item nav-link"> Admin</a>
+                <a href="admin-index.php"  class="nav-item nav-link active"> Admin</a>
                 <a href="../admin_jobs.php" class="nav-item nav-link"> Jobs</a>
                 <a href="../admin_companies.php" class="nav-item nav-link"> Companies</a>
                 <a href="../admin_candidates.php" class="nav-item nav-link"> Candidates</a>
@@ -188,7 +188,7 @@ if ($usertype == "Candidate") {
 } elseif ($usertype == "Company") {
 
     $company_profile = <<<DELIMETER
-        <a href="company-profile.php?id={$user_id}" class="nav-item nav-link"> Profile</a>
+        <a href="company_profile.php?id={$user_id}" class="nav-item nav-link"> Profile</a>
     DELIMETER;
     echo $company_profile;
         
@@ -938,7 +938,7 @@ function view_button_job_detail() {
 
         $username = $_SESSION['username'];
         
-        $user_query = ("SELECT role FROM user WHERE username = '{$username}' ");
+        $user_query = query("SELECT role FROM user WHERE username = '{$username}' ");
         confirm($user_query);
 
         while ($row = fetch_array($user_query)) {
@@ -952,7 +952,7 @@ function view_button_job_detail() {
             $company_id = $row['company_id'];
         }
 
-        if ($usertype == "Candidate") {
+        if ($usertype == 'Candidate') {
 
             $candidate_button = <<<DELIMETER
             <div class="company-details">
@@ -963,11 +963,11 @@ function view_button_job_detail() {
         }
      } else {
         $apply_login_button = <<<DELIMETER
-        <div class="company-details">
-                    <a href="login.php"><button name="company_details" type="submit" class="btn btn-primary">View Details !</button></a>
+                <div class="company-details">
+                <a href="login.php"><button name="company_details" type="submit" class="btn btn-primary">View Details !</button></a>
                 </div>
-DELIMETER;
-echo $apply_login_button;
+            DELIMETER;
+            echo $apply_login_button;
      }
 }
 

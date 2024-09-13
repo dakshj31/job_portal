@@ -104,7 +104,8 @@ if (isset($_GET['id'])) {
                             <h4 class="mb-4">Company Detail</h4>
                             <p class="m-0"> Name : <?php echo $company_name; ?></p>
                             <p class="m-0"> Email : <?php echo $company_email; ?></p>
-                            <p class="m-0"><?php view_button_job_detail(); ?></p>
+
+                            <?php view_button_job_detail(); ?>
                         </div>
                     </div>
                 </div>
