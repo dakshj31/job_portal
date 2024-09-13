@@ -1,6 +1,6 @@
 <?php include "../resources/db.php"; 
 
-//========ACCEPT JOB APPLICATION============//
+//========REJECT JOB APPLICATION============//
 
 if(isset($_GET['id'])) {
 
