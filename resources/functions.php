@@ -1024,19 +1024,19 @@ if(isset($_GET['id'])) {
                 $company_link = <<<DELIMETER
 
                  <div class="candidate-details">
-                        <a href="candidate_cv/$candidate_cv"><button name="candidate_details" type="submit" class="btn head-btn1">View CV</button></a>
+                        <a href="candidate_cv/$candidate_cv"><button name="candidate_details" type="submit" class="btn btn-primary">View CV</button></a>
                     </div>
                     <br>
                     <div class="send-accept">
-                        <a href="accept_application.php?id=$candidate_id&job_id={$_GET['job_id']}"><button name="accept_application" type="accept-application" class="btn head-btn1">Accept Application !</button></a>
+                        <a href="accept_application.php?id=$candidate_id&job_id={$_GET['job_id']}"><button name="accept_application" type="accept-application" class="btn btn-primary">Accept Application !</button></a>
                     </div>
                     <br>
                     <div class="send-reject">
-                        <a href="reject_application.php?id=$candidate_id&job_id={$_GET['job_id']}"><button name="reject_application" type="reject-application" class="btn head-btn1">Reject Application !</button></a>
+                        <a href="reject_application.php?id=$candidate_id&job_id={$_GET['job_id']}"><button name="reject_application" type="reject-application" class="btn btn-primary">Reject Application !</button></a>
                     </div>
                     <br>
                     <div class="send-message">
-                        <a href="candidate_message.php?id=$candidate_id"><button name="message_candidate" type="message_candidate" class="btn head-btn1">Message Candidate !</button></a>
+                        <a href="candidate_message.php?id=$candidate_id"><button name="message_candidate" type="message_candidate" class="btn btn-primary">Message Candidate !</button></a>
                     </div>
 
                 DELIMETER;
@@ -1047,11 +1047,11 @@ if(isset($_GET['id'])) {
                 $admin_link = <<<DELIMETER
 
                     <div class="candidate-details">
-                        <a href="candidate_cv/$candidate_cv"><button name="candidate_details" type="submit" class="btn head-btn1">View CV</button></a>
+                        <a href="candidate_cv/$candidate_cv"><button name="candidate_details" type="submit" class="btn btn-primary">View CV</button></a>
                     </div>
                     <br>
                     <div class="send-message">
-                        <a href="candidate_message.php?id=$candidate_id"><button name="message_candidate" type="message_candidate" class="btn head-btn1">Message Candidate !</button></a>
+                        <a href="candidate_message.php?id=$candidate_id"><button name="message_candidate" type="message_candidate" class="btn btn-primary">Message Candidate !</button></a>
                     </div>
 
                 DELIMETER;
@@ -1106,13 +1106,13 @@ function get_applied_jobs_company_admin() {
 
     $company_id = $_SESSION['user_id'];
 
-    $company_id_query = query("SELECT * FROM application WHERE comapny_id = '{$company_id}' ");
+    $company_id_query = query("SELECT * FROM application WHERE company_id = '{$company_id}' ");
     confirm($company_id_query);
 
     while ($row = fetch_array($company_id_query)) {
         $job_id = $row['job_id'];
         $user_id = $row['user_id'];
-        $applied_at = $row['created at'];
+        $applied_at = $row['created_at'];
 
         $select_job_query = query("SELECT * FROM jobs WHERE id = '{$job_id}' AND status = '0' ");
         confirm($select_job_query);
@@ -1147,7 +1147,7 @@ function get_applied_jobs_company_admin() {
                         </td>
                         <td>
                             <div class="header-btn d-none d-lg-block">
-                                <a href="job_details.php?id={$job_id}&job_id={$applied_job_id}" class="btn btn-primary">View</a>
+                                <a href="job-detail.php?id={$job_id}&job_id={$applied_job_id}" class="btn btn-primary">View</a>
                             </div>
                         </td>
                     </tr>
@@ -1186,7 +1186,7 @@ function get_application_status_job() {
                     <td>{$job_description}</td>
                     <td>
                     <div class="header-btn d-none d-lg-block">
-                    <a href="job_details.php?id={$row['id']}" class="btn btn-primary">View</a>
+                    <a href="job-detail.php?id={$row['id']}" class="btn btn-primary">View</a>
                     </div>
                     </td>
                     <td>

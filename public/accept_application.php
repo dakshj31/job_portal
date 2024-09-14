@@ -13,11 +13,11 @@ if(isset($_GET['id'])) {
 
         while ($orw = fetch_array($query)) {
 
-            $comapny_id = $row['company_id'];
+            $company_id = $row['company_id'];
             $status = 'Accepted';
 
             $accept_query = "UPDATE application SET status = '{$status}' ";
-            $accept_query .= "WHERE job_id = '{$job_id}' AND comapny_id = '{$company_id} AND user_id = '{$_GET['id']}' ";
+            $accept_query .= "WHERE job_id = '{$job_id}' AND company_id = '{$company_id}' AND user_id = '{$_GET['id']}' ";
             $query = query($accept_query);
             confirm($query);
 

@@ -1,21 +1,19 @@
 <?php include "../resources/db.php"; 
 include "../resources/header.php"; ?>
 
+
 <!-- Hero Area Start-->
-<!-- Hero Area Start-->
-<div class="slider-area ">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="hero-cap text-center">
-                        <h2><i class="" style="font-size: 100px;"></i>Job Applications Received !</h2>
+                        <h2><i class="" style="font-size: 240px;"></i> Job Applications Received !</h2>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </div>
-<br
+<br>
 <!-- Hero Area End -->
 
 <div class="container">
