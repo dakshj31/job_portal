@@ -1101,6 +1101,106 @@ function get_jobs_candidate_admin() {
     }
 }
     
+
+function get_applied_jobs_company_admin() {
+
+    $company_id = $_SESSION['user_id'];
+
+    $company_id_query = query("SELECT * FROM application WHERE comapny_id = '{$company_id}' ");
+    confirm($company_id_query);
+
+    while ($row = fetch_array($company_id_query)) {
+        $job_id = $row['job_id'];
+        $user_id = $row['user_id'];
+        $applied_at = $row['created at'];
+
+        $select_job_query = query("SELECT * FROM jobs WHERE id = '{$job_id}' AND status = '0' ");
+        confirm($select_job_query);
+
+        while($row = fetch_array($select_job_query)) {
+
+            $applied_job_id = $row['id'];
+            $applied_job_title = $row['title'];
+            $applied_job_description = $row['description'];
+            $applied_job_salary = $row['salary'];
+            $applied_job_location = $row['location'];
+
+            $select_user_query = query("SELECT * FROM user WHERE user_id = '{$user_id}' ");
+            confirm($select_user_query);
+
+            while ($row = fetch_array($select_user_query)) {
+
+                $applied_job_username = $row['username'];
+
+                $show_applied_job_details = <<<DELIMETER
+                        <tr>
+                        <td>{$applied_job_id}</td>
+                        <td>{$applied_job_title}</td>
+                        <td>{$applied_job_description}</td>
+                        <td>&#8377;{$applied_job_salary}</td>
+                        <td>{$applied_job_location}</td>
+                        <td>{$applied_at}</td>
+                        <td>
+                            <div class="header-btn d-none d-lg-block">
+                                <a href="candidate_details.php?id={$user_id}&job_id={$applied_job_id}" class="btn btn-primary">{$applied_job_username}</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="header-btn d-none d-lg-block">
+                                <a href="job_details.php?id={$job_id}&job_id={$applied_job_id}" class="btn btn-primary">View</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                DELIMETER;
+                   echo $show_applied_job_details;
+            }
+
+        }
+    }
+}
     
+
+function get_application_status_job() {
+
+    $job_query = query("SELECT * FROM application WHERE user_id = '{$_SESSION['user_id']}' ");
+
+    while ($row = fetch_array($job_query)) {
+        $job_id = $row['job_id'];
+        $status = $row['status'];
+
+        $query = query("SELECT * FROM jobs WHERE id = '{$job_id}' AND status = '0' ");
+        confirm($query);
+
+        while($row = fetch_array($query)) {
+
+            $job_title = $row['title'];
+            $job_description = $row['description'];
+            $job_company_id = $row['company_id'];
+
+            $status_job = <<<DELIMETER
+
+                    <tr>
+                    <td>{$job_id}</td>
+                    <td>{$job_title}</td>
+                    <td>{$job_description}</td>
+                    <td>
+                    <div class="header-btn d-none d-lg-block">
+                    <a href="job_details.php?id={$row['id']}" class="btn btn-primary">View</a>
+                    </div>
+                    </td>
+                    <td>
+                    <div class="header-btn d-none d-lg-block">
+                    <a href="company_details.php?id={$job_company_id}" class="btn btn-primary">View</a>
+                    </div>
+                    </td>
+                    <td>{$status}</td>
+                    </tr>
+
+            DELIMETER;
+            echo $status_job;
+        }
+    }
+}
     
     ?>
